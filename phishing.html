@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Awareness Training | Dheekshita CodeAlpha Task:2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00f0ff;
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00f0ff 0%, #00bfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00f0ff;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00f0ff 0%, #00bfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: rgba(30, 30, 45, 0.8);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .section h2 {
+            color: #00f0ff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #00f0ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #00bfff;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .warning-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .tip-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .info-box {
+            background: rgba(0, 240, 255, 0.1);
+            border-left: 4px solid #00f0ff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .example-email {
+            background: #1a1a2e;
+            border: 2px solid #dc2626;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .email-header {
+            border-bottom: 1px solid #444;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .red-flag {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .quiz-container {
+            background: rgba(30, 30, 45, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-option {
+            background: rgba(0, 240, 255, 0.1);
+            border: 2px solid #00f0ff;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(0, 240, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: #22c55e;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: #dc2626;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #00bfff 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: rgba(0, 240, 255, 0.1);
+            border-radius: 8px;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "•";
+            position: absolute;
+            left: 1rem;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 191, 255, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #00f0ff;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Dheekshita CodeAlpha Task:2</div>
+            <ul class="nav-links">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#types">Types</a></li>
+                <li><a href="#recognize">Recognize</a></li>
+                <li><a href="#tactics">Tactics</a></li>
+                <li><a href="#practices">Best Practices</a></li>
+                <li><a href="#prevention">Prevention</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Phishing Awareness Training</h1>
+        <p>Learn to identify, prevent, and protect yourself from phishing attacks</p>
+    </div>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section id="intro" class="section">
+            <h2>What is Phishing?</h2>
+            <p>Phishing is a cybercrime where attackers impersonate legitimate organizations to steal sensitive information such as login credentials, credit card numbers, or personal data. These attacks typically occur through email, text messages, or fake websites.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">of data breaches start with phishing</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3.4B</div>
+                    <div class="stat-label">phishing emails sent daily</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$17,700</div>
+                    <div class="stat-label">average cost per minute of a phishing attack</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>WARNING:</strong> Cybercriminals are becoming increasingly sophisticated. Even tech-savvy individuals can fall victim to well-crafted phishing attempts.
+            </div>
+        </section>
+
+        <!-- Types of Phishing Section -->
+        <section id="types" class="section">
+            <h2>Types of Phishing Attacks</h2>
+            
+            <h3>1. Email Phishing</h3>
+            <p>The most common form of phishing where attackers send fraudulent emails that appear to be from reputable sources. These emails often contain malicious links or attachments designed to steal credentials or install malware.</p>
+            
+            <h3>2. Spear Phishing</h3>
+            <p>Highly targeted attacks directed at specific individuals or organizations. Attackers research their victims and craft personalized messages that reference legitimate information to appear authentic. These attacks are much more sophisticated than general phishing campaigns.</p>
+            
+            <h3>3. Whaling</h3>
+            <p>A type of spear phishing that targets high-profile executives and senior management. Also known as CEO fraud, these attacks often impersonate executives to authorize fraudulent wire transfers or access sensitive corporate information.</p>
+            
+            <h3>4. Smishing (SMS Phishing)</h3>
+            <p>Phishing attacks delivered via SMS text messages. These messages often contain malicious links or phone numbers and may impersonate banks, delivery services, or government agencies. The urgency created by text messages makes recipients more likely to respond quickly.</p>
+            
+            <h3>5. Vishing (Voice Phishing)</h3>
+            <p>Phone-based phishing attacks where scammers call victims pretending to be from legitimate organizations. They use social engineering tactics to extract sensitive information or convince victims to perform actions like transferring money or installing remote access software.</p>
+            
+            <h3>6. Angler Phishing</h3>
+            <p>Attacks conducted through social media platforms. Scammers create fake customer service accounts or impersonate legitimate brands to intercept customer complaints and steal credentials or personal information through direct messages.</p>
+            
+            <h3>7. Clone Phishing</h3>
+            <p>Attackers create nearly identical copies of legitimate emails that victims have previously received. They replace legitimate attachments or links with malicious ones and resend the email from a spoofed address, claiming it is an updated or corrected version.</p>
+            
+            <h3>8. Pharming</h3>
+            <p>A sophisticated attack that redirects users from legitimate websites to fraudulent ones without their knowledge. This is achieved by compromising DNS servers or modifying local host files, making it extremely difficult to detect.</p>
+
+            <h3>9. Search Engine Phishing</h3>
+            <p>Fraudulent websites designed to appear in search engine results for popular queries. These sites mimic legitimate businesses and capture information when users attempt to make purchases or create accounts.</p>
+
+            <h3>10. Man-in-the-Middle (MITM) Attacks</h3>
+            <p>Attackers intercept communication between two parties to steal or manipulate data. This commonly occurs on unsecured public Wi-Fi networks where attackers can capture login credentials, financial information, and other sensitive data.</p>
+
+            <div class="info-box">
+                <strong>EVOLUTION OF THREATS:</strong> As security measures improve, attackers continuously develop new phishing variants. Staying informed about emerging attack types is crucial for maintaining effective defenses.
+            </div>
+        </section>
+
+        <!-- Recognize Phishing Section -->
+        <section id="recognize" class="section">
+            <h2>How to Recognize Phishing Emails</h2>
+            
+            <h3>Red Flags to Watch For:</h3>
+            <ul class="checklist">
+                <li><strong>Suspicious sender address:</strong> Look carefully at the email domain. "paypa1.com" is not "paypal.com"</li>
+                <li><strong>Generic greetings:</strong> "Dear Customer" instead of your actual name</li>
+                <li><strong>Urgent or threatening language:</strong> "Act now or your account will be closed!"</li>
+                <li><strong>Spelling and grammar errors:</strong> Professional companies proofread their emails</li>
+                <li><strong>Suspicious links:</strong> Hover over links to see the actual URL before clicking</li>
+                <li><strong>Unexpected attachments:</strong> Don't open attachments from unknown sources</li>
+                <li><strong>Requests for sensitive information:</strong> Legitimate companies never ask for passwords via email</li>
+            </ul>
+
+            <h3>Real-World Example: Fake Banking Email</h3>
+            <div class="example-email">
+                <div class="email-header">
+                    <strong>From:</strong> <span class="red-flag">security@bankofamerica-verify.com</span><br>
+                    <strong>Subject:</strong> Urgent: Verify Your Account Now<br>
+                    <strong>Date:</strong> Today
+                </div>
+                <p>Dear Valued Customer,</p>
+                <p>We have detected <span class="red-flag">suspicious activity</span> on your account. Please <span class="red-flag">verify your identity immediately</span> by clicking the link below, or your account will be <span class="red-flag">suspended within 24 hours</span>.</p>
+                <p><a href="#" style="color: #00f0ff;">[Verify Account Now]</a></p>
+                <p>Thank you for your <span class="red-flag">immediate attention</span> to this matter.</p>
+                <p>Bank of America Security Team</p>
+            </div>
+
+            <div class="info-box">
+                <strong>RED FLAGS IN THIS EXAMPLE:</strong>
+                <ul style="margin-top: 1rem;">
+                    <li>Suspicious domain: "bankofamerica-verify.com" (not official)</li>
+                    <li>Generic greeting: "Dear Valued Customer"</li>
+                    <li>Creates urgency: "24 hours" deadline</li>
+                    <li>Threatens account suspension</li>
+                    <li>Requests immediate action via link</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Fake Websites Section -->
+        <section class="section">
+            <h2>Identifying Fake Websites</h2>
+            
+            <h3>Website Warning Signs:</h3>
+            <ul class="checklist">
+                <li><strong>Check the URL carefully:</strong> Look for misspellings or extra characters (e.g., "arnaz0n.com" vs "amazon.com")</li>
+                <li><strong>Look for HTTPS:</strong> Legitimate sites use secure connections (in address bar)</li>
+                <li><strong>Poor design quality:</strong> Blurry logos, broken layouts, or outdated designs</li>
+                <li><strong>No contact information:</strong> Legitimate businesses provide multiple ways to contact them</li>
+                <li><strong>Too-good-to-be-true offers:</strong> Unrealistic discounts or prizes</li>
+                <li><strong>Suspicious payment methods:</strong> Requests for wire transfers or cryptocurrency only</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>PRO TIP:</strong> Before entering sensitive information, type the website address directly into your browser instead of clicking links in emails. Use bookmarks for frequently visited sites.
+            </div>
+        </section>
+
+        <!-- Social Engineering Tactics -->
+        <section id="tactics" class="section">
+            <h2>Social Engineering Tactics</h2>
+            <p>Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. Attackers exploit human psychology rather than technical vulnerabilities.</p>
+
+            <h3>Common Social Engineering Techniques:</h3>
+            
+            <div class="info-box">
+                <h4 style="color: #00f0ff; margin-bottom: 0.5rem;">1. Pretexting</h4>
+                <p>The attacker creates a fabricated scenario to steal information. Example: Someone calls pretending to be IT support and asks for your password.</p>
+            </div>
+
+            <div class="info-box">
+                <h4 style="color: #00f0ff; margin-bottom: 0.5rem;">2. Baiting</h4>
+                <p>Offering something enticing to trick victims. Example: "Free movie downloads!" or leaving infected USB drives in parking lots.</p>
+            </div>
+
+            <div class="info-box">
+                <h4 style="color: #00f0ff; margin-bottom: 0.5rem;">3. Quid Pro Quo</h4>
+                <p>Promising a benefit in exchange for information. Example: "Complete this survey and win an iPhone!"</p>
+            </div>
+
+            <div class="info-box">
+                <h4 style="color: #00f0ff; margin-bottom: 0.5rem;">4. Tailgating</h4>
+                <p>Following authorized personnel into restricted areas. Example: Asking someone to "hold the door" at a secure building entrance.</p>
+            </div>
+
+            <div class="info-box">
+                <h4 style="color: #00f0ff; margin-bottom: 0.5rem;">5. Spear Phishing</h4>
+                <p>Targeted attacks using personal information. Example: An email that references your recent purchase or mentions your boss by name.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>REAL-WORLD CASE:</strong> In 2016, a Lithuanian man scammed Google and Facebook out of $100 million by sending fake invoices that appeared to be from a legitimate computer manufacturer. The companies paid without verifying. This demonstrates how even large corporations can fall victim to social engineering.
+            </div>
+        </section>
+
+        <!-- Best Practices Section -->
+        <section id="practices" class="section">
+            <h2>Best Practices to Avoid Phishing</h2>
+
+            <h3>Email Security:</h3>
+            <ul class="checklist">
+                <li>Always verify the sender's email address by checking the full address, not just the display name</li>
+                <li>Never click links in unexpected emails - type URLs directly into your browser</li>
+                <li>Hover over links to preview the destination URL before clicking</li>
+                <li>Be skeptical of urgent requests for personal or financial information</li>
+                <li>Enable multi-factor authentication (MFA) on all accounts</li>
+                <li>Use email filters and spam detection tools</li>
+            </ul>
+
+            <h3>Password Security:</h3>
+            <ul class="checklist">
+                <li>Use unique, complex passwords for each account (12+ characters)</li>
+                <li>Utilize a password manager to store credentials securely</li>
+                <li>Never share passwords via email, text, or phone</li>
+                <li>Change passwords immediately if you suspect compromise</li>
+                <li>Enable biometric authentication when available</li>
+            </ul>
+
+            <h3>General Security Practices:</h3>
+            <ul class="checklist">
+                <li>Keep software, browsers, and operating systems up to date</li>
+                <li>Install reputable antivirus and anti-malware software</li>
+                <li>Be cautious on public Wi-Fi - use a VPN for sensitive transactions</li>
+                <li>Regularly backup important data</li>
+                <li>Educate yourself and stay informed about new threats</li>
+                <li>Report suspected phishing to your IT department or the impersonated organization</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>REMEMBER:</strong> When in doubt, verify through official channels. Call the company using a phone number from their official website, not from the suspicious email or message.
+            </div>
+        </section>
+
+        <!-- Prevention Strategies Section -->
+        <section id="prevention" class="section">
+            <h2>Advanced Prevention Strategies</h2>
+
+            <h3>Technical Defenses:</h3>
+            <ul class="checklist">
+                <li>Deploy email authentication protocols (SPF, DKIM, DMARC) to verify sender legitimacy</li>
+                <li>Implement web filtering solutions to block access to known malicious sites</li>
+                <li>Use endpoint detection and response (EDR) systems for advanced threat detection</li>
+                <li>Enable automatic software updates to patch security vulnerabilities</li>
+                <li>Configure firewalls to monitor and control incoming and outgoing network traffic</li>
+                <li>Utilize sandboxing technology to test suspicious files in isolated environments</li>
+            </ul>
+
+            <h3>Organizational Measures:</h3>
+            <ul class="checklist">
+                <li>Conduct regular security awareness training for all employees</li>
+                <li>Implement a clear incident response plan for suspected phishing attacks</li>
+                <li>Establish verification procedures for financial transactions and sensitive requests</li>
+                <li>Create a culture where employees feel comfortable reporting suspicious activities</li>
+                <li>Perform periodic phishing simulation exercises to test employee awareness</li>
+                <li>Maintain an updated inventory of all digital assets and access privileges</li>
+            </ul>
+
+            <h3>Data Protection:</h3>
+            <ul class="checklist">
+                <li>Encrypt sensitive data both at rest and in transit</li>
+                <li>Implement data loss prevention (DLP) solutions to monitor and protect sensitive information</li>
+                <li>Regularly backup critical data to secure, offline locations</li>
+                <li>Apply the principle of least privilege for system and data access</li>
+                <li>Use secure file sharing solutions instead of email for sensitive documents</li>
+                <li>Monitor for unauthorized access attempts and suspicious account activity</li>
+            </ul>
+
+            <h3>Browser and Network Security:</h3>
+            <ul class="checklist">
+                <li>Disable automatic downloads and macro execution in office applications</li>
+                <li>Use DNS filtering services to block malicious domains</li>
+                <li>Implement network segmentation to limit lateral movement of threats</li>
+                <li>Deploy intrusion detection and prevention systems (IDS/IPS)</li>
+                <li>Use secure DNS protocols (DNS over HTTPS or DNS over TLS)</li>
+                <li>Configure browsers to warn about unsafe sites and downloads</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>LAYERED SECURITY:</strong> No single defense is foolproof. Implement multiple layers of security controls to create a comprehensive defense-in-depth strategy that can withstand sophisticated attacks.
+            </div>
+        </section>
+
+        <!-- Interactive Quiz Section -->
+        <section id="quiz" class="section">
+            <h2>Test Your Knowledge</h2>
+            <p>Take this interactive quiz to test your phishing awareness skills!</p>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>Question 1: Email Analysis</h3>
+                    <p>You receive an email from "support@paypa1-security.com" asking you to verify your account. What should you do?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 1)">
+                            A) Click the link and verify your account immediately
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 1)">
+                            B) Reply to the email asking for more information
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 1)">
+                            C) Delete the email and visit PayPal's official website directly
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 1)">
+                            D) Forward it to all your contacts to warn them
+                        </div>
+                    </div>
+                    <div id="feedback1" class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>Question 2: Social Engineering</h3>
+                    <p>Someone calls claiming to be from your bank's fraud department, asking for your PIN to "verify your identity." What should you do?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 2)">
+                            A) Provide your PIN since they called you
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 2)">
+                            B) Hang up and call your bank using the official number on your card
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 2)">
+                            C) Ask them to verify their identity first
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 2)">
+                            D) Give them the PIN but change it later
+                        </div>
+                    </div>
+                    <div id="feedback2" class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>Question 3: URL Inspection</h3>
+                    <p>Which of these URLs is most likely legitimate for Amazon?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 3)">
+                            A) http://amazon-security-verify.com
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 3)">
+                            B) https://www.amazon.com
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 3)">
+                            C) https://www.amaz0n.com
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 3)">
+                            D) http://amazon.promo-deals.net
+                        </div>
+                    </div>
+                    <div id="feedback3" class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>Question 4: Red Flags</h3>
+                    <p>Which of these is NOT typically a phishing red flag?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 4)">
+                            A) Generic greeting like "Dear Customer"
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 4)">
+                            B) Urgent language creating time pressure
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 4)">
+                            C) An unsubscribe link at the bottom of the email
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 4)">
+                            D) Request for password or credit card information
+                        </div>
+                    </div>
+                    <div id="feedback4" class="quiz-feedback"></div>
+                </div>
+
+                <button class="btn" onclick="resetQuiz()">Reset Quiz</button>
+            </div>
+        </section>
+
+
+            <div class="tip-box">
+                <strong>STAY VIGILANT:</strong> Cybersecurity is an ongoing process. Regularly update your knowledge, stay informed about new threats, and always think before you click!
+                <strong>CodeAlpha-Intership || Dheekshita R || Task : 2 ||</strong> 
+            </div>
+        </section>
+    </div>
+    <script>
+        let score = 0;
+        let questionsAnswered = new Set();
+
+        function checkAnswer(element, isCorrect, questionNum) {
+            // Prevent answering the same question twice
+            if (questionsAnswered.has(questionNum)) {
+                return;
+            }
+
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback' + questionNum);
+            
+            // Disable all options for this question
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
+            questionsAnswered.add(questionNum);
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                score++;
+                feedback.style.background = 'rgba(34, 197, 94, 0.2)';
+                feedback.style.borderLeft = '4px solid #22c55e';
+                feedback.innerHTML = '<strong>CORRECT!</strong> ' + getExplanation(questionNum, true);
+            } else {
+                element.classList.add('incorrect');
+                feedback.style.background = 'rgba(220, 38, 38, 0.2)';
+                feedback.style.borderLeft = '4px solid #dc2626';
+                feedback.innerHTML = '<strong>INCORRECT.</strong> ' + getExplanation(questionNum, false);
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.textContent.includes(getCorrectAnswer(questionNum))) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            feedback.classList.add('show');
+
+            // Show final score after all questions answered
+            if (questionsAnswered.size === 4) {
+                setTimeout(() => {
+                    alert(`Quiz Complete! Your score: ${score}/4\n\n${getScoreMessage(score)}`);
+                }, 500);
+            }
+        }
+
+        function getCorrectAnswer(questionNum) {
+            const answers = {
+                1: 'C) Delete the email',
+                2: 'B) Hang up and call',
+                3: 'B) https://www.amazon.com',
+                4: 'C) An unsubscribe link'
+            };
+            return answers[questionNum];
+        }
+
+        function getExplanation(questionNum, isCorrect) {
+            const explanations = {
+                1: {
+                    correct: "The email domain 'paypa1-security.com' (with a number 1 instead of letter l) is a common phishing tactic. Always navigate directly to official websites rather than clicking email links.",
+                    incorrect: "Notice the suspicious domain 'paypa1-security.com' uses the number '1' instead of the letter 'l'. This is a phishing attempt. Always visit official websites directly by typing the URL."
+                },
+                2: {
+                    correct: "Banks will NEVER ask for your PIN, password, or full account number. Legitimate institutions know this information and would never request it. Always hang up and call back using official contact information.",
+                    incorrect: "Legitimate banks never ask for your PIN or password. This is a social engineering attack. Hang up immediately and call your bank using the number on your card or their official website."
+                },
+                3: {
+                    correct: "This is the official Amazon domain with HTTPS encryption. Look for the secure connection indicator and verify the domain spelling carefully.",
+                    incorrect: "The correct answer uses HTTPS and the exact domain 'amazon.com'. Watch out for: missing HTTPS, misspellings (like '0' for 'o'), and suspicious subdomain or additional domains."
+                },
+                4: {
+                    correct: "Legitimate marketing emails typically include an unsubscribe link (required by law). However, don't click unsubscribe in suspicious emails - it confirms your email is active. Just delete them.",
+                    incorrect: "An unsubscribe link is normal in legitimate marketing emails. The other options are all common phishing red flags that should make you suspicious."
+                }
+            };
+            return explanations[questionNum][isCorrect ? 'correct' : 'incorrect'];
+        }
+
+        function getScoreMessage(score) {
+            if (score === 4) return "Perfect! You're a phishing detection expert!";
+            if (score === 3) return "Great job! You have strong phishing awareness.";
+            if (score === 2) return "Good effort! Review the explanations to improve.";
+            return "Keep learning! Phishing awareness takes practice.";
+        }
+
+        function resetQuiz() {
+            score = 0;
+            questionsAnswered.clear();
+            
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.style.pointerEvents = 'auto';
+            });
+            
+            document.querySelectorAll('.quiz-feedback').forEach(feedback => {
+                feedback.classList.remove('show');
+                feedback.innerHTML = '';
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
