@@ -24,6 +24,6 @@ It educates users about phishing attacks, how to recognize them, and how to prev
 ---
 
 ## Author
-- Dheekshita R 
+Dheekshita R 
 
 
