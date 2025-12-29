@@ -1,9 +1,7 @@
-# CodeAlpha_PhishingAwarenessTraining
-
 # Phishing Awareness Training
 
 ## Description
-This project is a simple awareness website created for **CodeAlpha Task 2**.  
+This project is a simple awareness website .  
 It educates users about phishing attacks, how to recognize them, and how to prevent falling victim to online scams.
 
 ---
@@ -25,13 +23,7 @@ It educates users about phishing attacks, how to recognize them, and how to prev
 
 ---
 
-## Purpose
-Created for educational purposes as part of the **CodeAlpha Cyber Security Internship**.
-
----
-
 ## Author
 - Dheekshita R 
-- CodeAlpha Cyber Security Internship – Task 2
 
 
