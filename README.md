@@ -1,8 +1,15 @@
 # Phishing Awareness Training
 
 ## Description
-This project is a simple awareness website .  
-It educates users about phishing attacks, how to recognize them, and how to prevent falling victim to online scams.
+- This project is a simple Phishing awareness website .  
+- It educates users about phishing attacks, how to recognize them, and how to prevent falling victim to online scams.
+
+---
+
+## Technologies Used
+- HTML  
+- CSS  
+- JavaScript  
 
 ---
 
@@ -15,15 +22,3 @@ It educates users about phishing attacks, how to recognize them, and how to prev
 - Awareness Quiz  
 
 ---
-
-## Technologies Used
-- HTML  
-- CSS  
-- JavaScript  
-
----
-
-## Author
-Dheekshita R 
-
-
