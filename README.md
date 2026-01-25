@@ -22,3 +22,9 @@
 - Awareness Quiz  
 
 ---
+
+## Author
+
+Dheekshita R
+
+---
